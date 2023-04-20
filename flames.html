@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flames</title>
+</head>
+<body>
+    <h1 style="color: rgb(253, 190, 113);display: flex;margin-left: 500px;margin-top: 120px;">Enter the names to find the relationship</h1>
+
+    <div class="hello" style="display: flex;flex-direction: column;height: 400px;width: 500px;gap: 1.5em;align-items: center;justify-content: center; margin: auto;">
+    <input type="text" placeholder="Enter name" id="inp1" style="height: 30px;width: 300px;border: none;border-bottom: 1px solid black;outline: none;"/>
+    <input type="text" placeholder="Enter name" id="inp2" style="height: 30px;width: 300px;border: none;border-bottom: 1px solid black;outline: none;"/>
+    <button style="border-radius: 10%;height: 30px;background-color: rgb(253, 190, 113);margin-top: 16px;"  onclick="check()">Find Out.. !</button>
+    </div>
+    
+    <div style="color:rgb(253, 190, 113) ;font-size: 40px;display: flex;align-items: center;justify-content: center;" id="match"></div>
+    <script>
+        function check() {
+var a=document.getElementById("inp1").value
+var b=document.getElementById("inp2").value
+console.log(a)
+console.log(b)
+var c="flames"
+console.log(a.split(""))
+var a=a.split("")
+var b=b.split("")
+var c=c.split("")
+const al=a.length
+const bl=b.length
+var cnt=0
+a.map((e)=>{
+    for(var i=0;i<bl;i++){
+        if(e===b[i]){
+            b[i]='#'
+            cnt+=1
+            break
+        }
+    }
+})
+var f=(al-cnt)+(bl-cnt)
+console.log(f)
+var ct=0;
+var i=f-1
+if(i>=6){
+     i=i%6}
+console.log(i)
+while(ct<5){
+    var d=f
+    if(c[i]!='#'){
+        c[i]='#'
+        ct+=1
+        console.log(c)
+    }
+    while(d>0){
+        i+=1
+        if(i>=6){
+            i=0
+        }
+        if(c[i]!='#'){
+            d-=1
+        }
+    }
+    c[i]='#'
+    ct+=1
+    console.log(c)
+}
+console.log(c)
+
+for(let k in c){
+        if(c[k]!='#'){
+        if(c[k]=='a'){
+             document.getElementById("match").innerHTML=("Affection")}
+        else if(c[k]=='f'){
+             document.getElementById("match").innerHTML=("Friends")}
+        else if(c[k]=='l'){
+             document.getElementById("match").innerHTML=("Love")}
+        else if(c[k]=='m'){
+             document.getElementById("match").innerHTML=("Marriage")}
+        else if(c[k]=='s'){
+             document.getElementById("match").innerHTML=("Sister")}
+        else {
+             document.getElementById("match").innerHTML=("Enemy")
+        }
+        break
+    }
+}
+        }
+    </script>
+</body>
+</html>
